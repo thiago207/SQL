@@ -1,0 +1,15 @@
+SELECT * FROM PRODUCTS;
+SELECT * FROM ORDER_DETAILS;
+
+
+
+SELECT 
+	product_name,
+	SUM(quantity) AS quantidade_total
+FROM
+	ORDER_DETAILS AS o
+LEFT JOIN PRODUCTS AS p
+ON p.PRODUCT_ID = o.PRODUCT_ID
+GROUP BY product_name
+ORDER BY quantidade_total DESC;
+
