@@ -12,4 +12,3 @@ LEFT JOIN PRODUCTS AS p
 ON p.PRODUCT_ID = o.PRODUCT_ID
 GROUP BY product_name
 ORDER BY quantidade_total DESC;
-
