@@ -26,6 +26,10 @@ CREATE TABLE matriculas(
 	
 );
 
+DROP TABLE alunos;
+DROP TABLE cursos;
+DROP TABLE matriculas;
+
 
 
 
