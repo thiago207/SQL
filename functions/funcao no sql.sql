@@ -1,4 +1,6 @@
 select * from products;
+
+
 create or replace function analise_estoque(estoque_min int, estoque_max int)
 returns int
 language plpgsql
@@ -16,3 +18,9 @@ end $$;
 select analise_estoque(10,50);
 
 select count(*) - analise_estoque(10,50) from products; 
+
+
+select analise_estoque (estoque_min := 20, estoque_max := 35);
+
+
+-- drop function if exists analise_estoque; -- PARA EXCLUIR FUNCAO
