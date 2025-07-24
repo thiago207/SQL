@@ -1,6 +1,6 @@
 # 🧠 Estudos em SQL
 
-Repositório dedicado aos meus estudos em **SQL**, voltado para análise e manipulação de dados em bancos relacionais. Aqui exploro comandos fundamentais, consultas avançadas, modelagem de tabelas e projetos com dados reais, usando principalmente **SQLite**, **PostgreSQL** e **MySQL**.
+Repositório dedicado aos meus estudos em **SQL**, voltado para análise e manipulação de dados em bancos relacionais. Aqui exploro comandos fundamentais, consultas avançadas, modelagem de tabelas e projetos com dados reais, usando principalmente **SQL Server** e **PostgreSQL**.
 
 ---
 
