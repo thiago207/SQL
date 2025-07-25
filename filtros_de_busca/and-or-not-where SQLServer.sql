@@ -96,3 +96,25 @@ where ProductName like '%MP3 Player%'
 select * from DimProduct
 where ProductDescription like '%Type%'  -- %''% ENTRE % pode esta em qualquer lugar do texto, ''%: apenas no final, %'': apenas no começo
 
+
+-- BETWEEN = filtra os dados ENTRE algum valor BEETWEEN 50 and 100
+-- NOT BETWEEN = nega o periodo
+-- BETWEEN:
+
+select * from DimProduct
+where UnitPrice between 50 and 100
+
+select * from DimProduct
+where UnitPrice not between 50 and 100
+
+select * from DimEmployee
+where HireDate between '2000-01-01' and '2000-12-31'
+
+
+-- IS NULL / IS NOT NULL:
+
+select * from DimCustomer
+where CompanyName is not null
+
+select * from DimCustomer
+where CompanyName is  null
