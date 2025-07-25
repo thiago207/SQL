@@ -104,7 +104,7 @@ order by HireDate asc
 
 select top(1)FirstName, EmailAddress, HireDate from DimEmployee
 where Gender = 'M'
-order by HireDate desc
+order by HireDate asc
 
 /*5. Agora você precisa fazer uma análise dos produtos. Será necessário descobrir as seguintes
 informações:
