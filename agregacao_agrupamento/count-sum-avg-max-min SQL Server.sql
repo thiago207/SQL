@@ -104,7 +104,7 @@ order by HireDate asc
 
 select top(1)FirstName, EmailAddress, HireDate from DimEmployee
 where Gender = 'M'
-order by HireDate asc
+order by HireDate desc
 
 /*5. Agora você precisa fazer uma análise dos produtos. Será necessário descobrir as seguintes
 informações:
@@ -119,7 +119,7 @@ Para simplificar, você pode fazer isso em uma mesma consulta.*/
 
 select 
 	count(distinct ColorName) as 'Qtd. distinta de cores de produtos',
-	count(BrandName) as 'Qtd. distinta de marcas',
-	count(ClassName)  as 'Qtd. distinta de classes de produtos'
+	count(distinct BrandName) as 'Qtd. distinta de marcas',
+	count(distinct ClassName)  as 'Qtd. distinta de classes de produtos'
 from 
 	DimProduct
