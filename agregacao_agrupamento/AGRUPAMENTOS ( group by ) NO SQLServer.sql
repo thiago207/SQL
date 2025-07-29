@@ -95,32 +95,75 @@ SELECT * FROM FactSales
 
 /*1. a) Faça um resumo da quantidade vendida (SalesQuantity) de acordo com o canal de vendas
 (channelkey).*/
-select channelKey, count(SalesQuantity) from FactSales
+select 
+	channelKey, 
+	sum(SalesQuantity) 
+from 
+	FactSales
 group by channelKey
 
 /*b) Faça um agrupamento mostrando a quantidade total vendida (SalesQuantity) e quantidade
 total devolvida (Return Quantity) de acordo com o ID das lojas (StoreKey).*/
 
+select 
+	StoreKey, 
+	sum(SalesQuantity) 'total vendido',
+	sum(ReturnQuantity) as 'total devolvido'
+from 
+	FactSales
+group by StoreKey
+order by StoreKey asc
+
 /*c) Faça um resumo do valor total vendido (SalesAmount) para cada canal de venda, mas apenas
 para o ano de 2007.*/
 
+select 
+	channelKey, 
+	sum(SalesAmount) 'faturamento total'
+from 
+	FactSales
+where datekey between '20070101' and '20071231'
+group by channelKey
+
+
 /*2. Você precisa fazer uma análise de vendas por produtos. O objetivo final é descobrir o valor
 total vendido (SalesAmount) por produto (ProductKey).*/
+
+
+SELECT ProductKey, sum(SalesAmount) FROM FactSales
+group by ProductKey
 
 /*a) A tabela final deverá estar ordenada de acordo com a quantidade vendida e, além disso,
 mostrar apenas os produtos que tiveram um resultado final de vendas maior do que
 $5.000.000.*/
 
+SELECT ProductKey, sum(SalesAmount) FROM FactSales
+group by ProductKey
+having sum(SalesAmount) >= 5000000
+order by sum(SalesAmount) asc
+
 /*b) Faça uma adaptação no exercício anterior e mostre os Top 10 produtos com mais vendas.
 Desconsidere o filtro de $5.000.000 aplicado.*/
 
+SELECT top(10)
+	ProductKey, sum(SalesAmount) 
+FROM 
+	FactSales
+group by ProductKey
+having sum(SalesAmount) >= 5000000
+order by sum(SalesAmount) desc
+
 /*FACTONLINESALES
+
 3. 
 a) Você deve fazer uma consulta à tabela FactOnlineSales e descobrir qual é o ID
 (CustomerKey) do cliente que mais realizou compras online (de acordo com a coluna
 SalesQuantity).*/
-/*
 
+
+select * from fav
+
+/*
 b) Feito isso, faça um agrupamento de total vendido (SalesQuantity) por ID do produto
 e descubra quais foram os top 3 produtos mais comprados pelo cliente da letra a).*/
 
