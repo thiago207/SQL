@@ -86,10 +86,17 @@ HAVING COUNT(BrandName) >= 200  -- Filtra a tabela depois de agrupada
 
 
 --EXERCICIOS:
-/*Os exercícios abaixo estão divididos de acordo com uma determinada tabela do Banco de Dados.
-FACTSALES*/
+/*Os exercícios abaixo estão divididos de acordo com uma determinada tabela do Banco de Dados.*/
+
+
+--FACTSALES
+
+SELECT * FROM FactSales
+
 /*1. a) Faça um resumo da quantidade vendida (SalesQuantity) de acordo com o canal de vendas
 (channelkey).*/
+select channelKey, count(SalesQuantity) from FactSales
+group by channelKey
 
 /*b) Faça um agrupamento mostrando a quantidade total vendida (SalesQuantity) e quantidade
 total devolvida (Return Quantity) de acordo com o ID das lojas (StoreKey).*/
