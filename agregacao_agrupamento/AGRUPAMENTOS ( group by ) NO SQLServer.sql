@@ -61,3 +61,27 @@ FROM
 	DimProduct
 where BrandName = 'Contoso'
 group by ColorName
+
+
+--GROUP BY COM HAVING:
+
+SELECT 
+	BrandName,
+	count(*) as 'total por marca'
+FROM 
+	DimProduct
+group by BrandName
+HAVING count(*) >= 200
+
+
+SELECT
+	BrandName AS 'Marca',
+	COUNT(BrandName) AS 'Total Marca'
+FROM
+	DimProduct
+WHERE ClassName = 'Economy'     -- Filtra a tabela original, antes do agrupamento
+GROUP BY BrandName
+HAVING COUNT(BrandName) >= 200  -- Filtra a tabela depois de agrupada
+
+
+
