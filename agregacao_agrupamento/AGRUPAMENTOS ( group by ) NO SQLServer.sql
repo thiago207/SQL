@@ -286,6 +286,6 @@ select
 from 
 	DimEmployee
 where Gender = 'F' and 
-	DepartmentName in ('Production', 'Marketing', 'Engineering', 'Finance') 
+	DepartmentName in ('Production', 'Marketing', 'Engineering', 'Finance')		
 	and HireDate between '1999-01-01' and '2000-12-31'
 group by Title
