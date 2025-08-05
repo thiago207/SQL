@@ -15,9 +15,26 @@ group by c.ChannelDescription
 
 
 --LEFT JOIN
---LEFT JOIN
---LEFT JOIN
---LEFT JOIN
---LEFT JOIN
---LEFT JOIN
---LEFT JOIN
+
+
+
+--RIGHT JOIN
+
+
+
+--INNER JOIN
+
+
+--FULL JOIN
+
+
+
+--LEFT ANTI JOIN
+
+
+
+--RIGHT ANTI JOIN
+
+
+
+--FULL ANTI JOIN
