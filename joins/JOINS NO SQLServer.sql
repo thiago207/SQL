@@ -54,6 +54,14 @@ ON p.id_subcategoria = s.id_subcategoria
 
 --LEFT ANTI JOIN
 
+select 
+	p.id_produto, p.nome_produto, p.id_subcategoria,
+	s.nome_subcategoria
+from 
+	produtos as p
+LEFT ANTI JOIN subcategoria as s
+ON p.id_subcategoria = s.id_subcategoria
+
 
 
 --RIGHT ANTI JOIN
