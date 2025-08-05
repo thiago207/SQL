@@ -14,4 +14,10 @@ ON c.ChannelKey = f.channelKey
 group by c.ChannelDescription 
 
 
-
+--LEFT JOIN
+--LEFT JOIN
+--LEFT JOIN
+--LEFT JOIN
+--LEFT JOIN
+--LEFT JOIN
+--LEFT JOIN
