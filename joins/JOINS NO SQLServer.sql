@@ -113,4 +113,14 @@ FULL JOIN subcategoria as s
 ON p.id_subcategoria = s.id_subcategoria
 
 
+
+--CROSSJOIN
 select * from marcas
+select * from subcategoria
+
+
+SELECT 
+	marca, nome_subcategoria
+from 
+	marcas CROSS JOIN subcategoria
+
