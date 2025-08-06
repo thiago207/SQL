@@ -114,7 +114,7 @@ ON p.id_subcategoria = s.id_subcategoria
 
 
 
---CROSSJOIN
+--CROSSJOIN:
 select * from marcas
 select * from subcategoria
 
@@ -124,3 +124,22 @@ SELECT
 from 
 	marcas CROSS JOIN subcategoria
 
+
+
+
+--MUTIPLOS JOINS:
+
+select ProductKey, ProductName, ProductSubcategoryKey from DimProduct
+select ProductSubcategoryKey, ProductSubcategoryName, ProductCategoryKey from DimProductSubcategory
+SELECT ProductCategoryKey, ProductCategoryName from DimProductCategory
+
+
+select  p.ProductKey, p.ProductName, p.ProductSubcategoryKey,
+		s.ProductSubcategoryName,
+		c. ProductCategoryName
+from
+	DimProduct as p
+left join DimProductSubcategory as s
+on p.ProductSubcategoryKey = s.ProductSubcategoryKey
+inner join  DimProductCategory as c
+on s.ProductCategoryKey = c.ProductCategoryKey
