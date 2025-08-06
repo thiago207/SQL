@@ -113,3 +113,4 @@ FULL JOIN subcategoria as s
 ON p.id_subcategoria = s.id_subcategoria
 
 
+select * from marcas
