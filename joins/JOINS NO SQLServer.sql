@@ -139,7 +139,27 @@ select  p.ProductKey, p.ProductName, p.ProductSubcategoryKey,
 		c. ProductCategoryName
 from
 	DimProduct as p
-left join DimProductSubcategory as s
+inner join DimProductSubcategory as s
 on p.ProductSubcategoryKey = s.ProductSubcategoryKey
 inner join  DimProductCategory as c
 on s.ProductCategoryKey = c.ProductCategoryKey
+
+
+--UNION:
+
+select * from DimCustomer
+where Gender = 'F'
+UNION
+select * from DimCustomer
+where Gender = 'M'
+
+
+
+--UNION all:
+select FirstName, BirthDate 
+from DimCustomer
+where Gender = 'F'
+UNION
+select FirstName, BirthDate 
+from DimCustomer
+where Gender = 'M'
