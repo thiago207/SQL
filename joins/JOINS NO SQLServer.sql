@@ -159,7 +159,7 @@ where Gender = 'M'
 select FirstName, BirthDate 
 from DimCustomer
 where Gender = 'F'
-UNION
+UNION all
 select FirstName, BirthDate 
 from DimCustomer
 where Gender = 'M'
