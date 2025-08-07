@@ -54,3 +54,15 @@ on s.GeographyKey = g.GeographyKey
 
 select * from DimProduct
 select * from DimProductCategory
+
+
+select p.ProductName, p.ProductKey,
+	   c.ProductCategoryName, c.ProductCategoryDescription
+from DimProduct as p
+left join DimProductSubcategory as s
+on p.ProductSubcategoryKey = s.ProductSubcategoryKey
+left join DimProductCategory as c
+on s.ProductCategoryKey = c.ProductCategoryKey
+
+
+--5:
