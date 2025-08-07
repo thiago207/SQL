@@ -163,7 +163,31 @@ select o.OnlineSalesKey,
 	p.PromotionName,
 	o.SalesAmount
 from FactOnlineSales as o
-left join DimPromotion as p
+inner join DimPromotion as p
 on o.PromotionKey = p.PromotionName
 where p.PromotionName <> 'No Discount'
 order by o.DateKey asc
+
+
+--10)
+--A tabela abaixo é resultado de um Join entre a tabela FactSales e as tabelas: DimChannel,
+--DimStore e DimProduct.
+--Recrie esta consulta e classifique em ordem decrescente de acordo com SalesAmount.
+
+select top(10) * from FactSales 
+select top(10) * from DimChannel
+select top(10) * from DimProduct
+select top(10) * from DimStore
+
+select sales.SalesKey,
+	   cha.ChannelName,
+	   store.StoreName,
+	   ProductName,
+	   sales.SalesAmount
+from FactSales as sales
+inner join DimChannel as cha
+on sales.channelKey = cha.ChannelKey
+inner join DimStore as store
+on sales.StoreKey = store.StoreKey
+inner join DimProduct as p
+on sales.ProductKey = p.ProductKey
