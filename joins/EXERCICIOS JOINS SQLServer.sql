@@ -114,5 +114,22 @@ on p.ScenarioKey = s.ScenarioKey
 
 
 --7)
-Algumas subcategorias não possuem nenhum exemplar de produto. Identifique que
-subcategorias são essas.
+--Algumas subcategorias não possuem nenhum exemplar de produto. Identifique que
+--subcategorias são essas
+
+
+select * from DimProduct
+select * from DimProductSubcategory
+
+select --p.ProductName, p.ProductKey,
+	   s.ProductSubcategoryName
+from DimProduct as p
+right join DimProductSubcategory as s
+on p.ProductSubcategoryKey = s.ProductSubcategoryKey
+where p.ProductKey is null
+
+
+--8)
+
+
+
