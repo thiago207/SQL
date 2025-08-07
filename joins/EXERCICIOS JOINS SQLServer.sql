@@ -101,12 +101,18 @@ on s.AccountKey = a.AccountKey
  ScenarioName
  Amount*/
 select top(100) * from FactStrategyPlan
+select top(100) * from DimScenario
 
 
-select top (100) s.StrategyPlanKey,
-	s.DateKey,
-	s.Amount,
-	a.AccountName
-from FactStrategyPlan as s
-inner join DimAccount as a
-on s.AccountKey = a.AccountKey
+select top (100) p.StrategyPlanKey,
+	p.DateKey,
+	p.Amount,
+	s.ScenarioName
+from FactStrategyPlan as p
+inner join DimScenario as s
+on p.ScenarioKey = s.ScenarioKey 
+
+
+--7)
+Algumas subcategorias não possuem nenhum exemplar de produto. Identifique que
+subcategorias são essas.
