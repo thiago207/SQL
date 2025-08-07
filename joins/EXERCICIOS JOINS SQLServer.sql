@@ -130,6 +130,40 @@ where p.ProductKey is null
 
 
 --8)
+--A tabela abaixo mostra a combinação entre Marca e Canal de Venda, para as marcas Contoso,
+--Fabrikam e Litware. Crie um código SQL para chegar no mesmo resultado.
+select 
+	   distinct BrandName,
+	   ChannelName
+from
+	DimProduct CROSS JOIN DimChannel
+where BrandName in ('Fabrikam', 'Litware', 'Contoso')
 
 
+--9)
+/*Neste exercício, você deverá relacionar as tabelas FactOnlineSales com DimPromotion.
+Identifique a coluna que as duas tabelas têm em comum e utilize-a para criar esse
+relacionamento.
 
+Retorne uma tabela contendo as seguintes colunas:
+• OnlineSalesKey
+• DateKey
+• PromotionName
+• SalesAmount
+
+A sua consulta deve considerar apenas as linhas de vendas referentes a produtos com
+desconto (PromotionName <> ‘No Discount’). Além disso, você deverá ordenar essa tabela de
+acordo com a coluna DateKey, em ordem crescente.*/
+
+select top(100) * from DimPromotion
+select top(100) * from FactOnlineSales
+
+select o.OnlineSalesKey,
+	o.DateKey,
+	p.PromotionName,
+	o.SalesAmount
+from FactOnlineSales as o
+left join DimPromotion as p
+on o.PromotionKey = p.PromotionName
+where p.PromotionName <> 'No Discount'
+order by o.DateKey asc
