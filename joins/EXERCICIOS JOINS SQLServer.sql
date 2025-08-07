@@ -183,7 +183,7 @@ select top(100)
 	   sales.SalesKey,
 	   cha.ChannelName,
 	   store.StoreName,
-	   ProductName,
+	   p.ProductName,
 	   sales.SalesAmount
 from FactSales as sales
 inner join DimChannel as cha
