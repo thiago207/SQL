@@ -9,7 +9,7 @@ select * from DimProduct
 select * from DimProductSubcategory
 
 
-select p.*,
+select p.ProductName, p.ProductKey,
 	   s.ProductSubcategoryName
 from DimProduct as p
 inner join DimProductSubcategory as s
@@ -23,10 +23,34 @@ on p.ProductSubcategoryKey = s.ProductSubcategoryKey
 select * from DimProductCategory
 select * from DimProductSubcategory
 
-select s.*,
-	   c.ProductSubcategoryName
+select s.ProductSubcategoryName, s.ProductSubcategoryKey, s.ProductSubcategoryDescription,
+	   c.ProductCategoryName
 FROM DimProductSubcategory as s
 left join DimProductCategory as c
-on s.ProductCategoryDescription = c.ProductCategoryDescription
+on s.ProductCategoryKey = c.ProductCategoryKey
 	
 
+
+--3)
+--Para cada loja da tabela DimStore, descubra qual o Continente e o Nome do País associados
+--(de acordo com DimGeography). Seu SELECT final deve conter apenas as seguintes colunas:
+--StoreKey, StoreName, EmployeeCount, ContinentName e RegionCountryName. Utilize o LEFT
+--JOIN neste exercício.
+
+select * from DimStore
+select * from DimGeography
+
+select s.StoreKey, s.StoreName, s.EmployeeCount, 
+	   G.ContinentName, G.RegionCountryName
+from DimStore as s
+LEFT join DimGeography as g
+on s.GeographyKey = g.GeographyKey
+
+
+--4)
+--Complementa a tabela DimProduct com a informação de ProductCategoryDescription. Utilize
+--o LEFT JOIN e retorne em seu SELECT apenas as 5 colunas que considerar mais relevantes.
+
+
+select * from DimProduct
+select * from DimProductCategory
