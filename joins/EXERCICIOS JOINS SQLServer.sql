@@ -179,15 +179,16 @@ select top(10) * from DimChannel
 select top(10) * from DimProduct
 select top(10) * from DimStore
 
-select sales.SalesKey,
+select top(100)
+	   sales.SalesKey,
 	   cha.ChannelName,
 	   store.StoreName,
 	   ProductName,
 	   sales.SalesAmount
 from FactSales as sales
 inner join DimChannel as cha
-on sales.channelKey = cha.ChannelKey
+	on sales.channelKey = cha.ChannelKey
 inner join DimStore as store
-on sales.StoreKey = store.StoreKey
+	on sales.StoreKey = store.StoreKey
 inner join DimProduct as p
-on sales.ProductKey = p.ProductKey
+	on sales.ProductKey = p.ProductKey
