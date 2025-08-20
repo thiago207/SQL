@@ -1,14 +1,40 @@
 --joins com group by
 
 
-select top(10)* from FactSales
-
-select top(10) * from DimDate
+select	
+	d.CalendarYear as 'Ano',
+	sum(SalesQuantity) as 'Total vendido'
+from 
+	FactSales as f
+left join DimDate as d
+on f.DateKey = d.DateKey
+group by d.CalendarYear
 
 
 select	
-	CalendarYear as 'Ano',
+	d.CalendarYear as 'Ano',
 	sum(SalesQuantity) as 'Total vendido'
 from 
-	FactSales
-left join DimDate
+	FactSales as f
+left join DimDate as d
+on f.DateKey = d.DateKey
+where d.CalendarMonthLabel = 'January'
+group by d.CalendarYear
+order by sum(SalesQuantity) DESC
+
+select	
+	d.CalendarYear as 'Ano',
+	sum(SalesQuantity) as 'Total vendido'
+from 
+	FactSales as f
+left join DimDate as d
+on f.DateKey = d.DateKey
+where d.CalendarMonthLabel = 'January'
+group by d.CalendarYear
+HAVING sum(SalesQuantity) >= 1200000
+
+
+
+
+
+
