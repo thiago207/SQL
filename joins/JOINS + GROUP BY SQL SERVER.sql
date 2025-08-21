@@ -159,3 +159,17 @@ order by sum(SalesQuantity) DESC
 --b) Feito isso, faça um agrupamento de produtos e descubra quais foram os top 10 produtos mais
 --comprados pelo cliente da letra a, considerando o nome do produto.
 
+
+select 
+top(10)
+	p.ProductName,
+	sum(SalesQuantity)
+from 
+	 FactOnlineSales as fs
+inner join DimProduct as p
+on fs.ProductKey = p.ProductKey
+where CustomerKey = 7665
+group by p.ProductName
+order by sum(SalesQuantity) DESC
+
+
