@@ -245,6 +245,7 @@ from
 	DimProduct as p
 inner join DimProductSubcategory as s
 on s.ProductCategoryKey = p.ProductSubcategoryKey
+WHERE BrandName = 'Contoso' and ColorName = 'Silver'
 group by s.ProductSubcategoryName
 
 
