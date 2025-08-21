@@ -117,3 +117,45 @@ having SUM(SalesQuantity) >= 3000000
 --(ProductCategoryName). Obs: Você precisará fazer mais de 1 INNER JOIN, dado que a relação
 --entre FactSales e DimProductCategory não é direta.
 
+select  
+	c.ProductCategoryName,
+	SUM(SalesQuantity) as 'Total Vendido'
+from 
+	FactSales as f
+
+inner join DimProduct as p
+	on p.ProductKey = f.ProductKey
+
+inner join DimProductSubcategory as sb
+	on p.ProductSubcategoryKey = sb.ProductSubcategoryKey 
+
+inner join DimProductCategory as c
+	on c.ProductCategoryKey = sb.ProductCategoryKey
+
+group by c.ProductCategoryName 
+
+
+--FACTONLINESALES
+--4. 
+
+--a) Você deve fazer uma consulta à tabela FactOnlineSales e descobrir qual é o nome completo
+--do cliente que mais realizou compras online (de acordo com a coluna SalesQuantity).
+
+select top(10) * from FactOnlineSales
+
+select 
+top(1)
+	c.FirstName,
+	c.LastName,
+	sum(SalesQuantity)
+from 
+	 FactOnlineSales as fs
+inner join DimCustomer as c
+on fs.CustomerKey = c.CustomerKey
+where c.CustomerType = 'Person'
+group by c.FirstName, c.LastName, c.CustomerKey
+order by sum(SalesQuantity) DESC
+
+--b) Feito isso, faça um agrupamento de produtos e descubra quais foram os top 10 produtos mais
+--comprados pelo cliente da letra a, considerando o nome do produto.
+
