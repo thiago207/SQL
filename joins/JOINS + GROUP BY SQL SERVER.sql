@@ -173,3 +173,23 @@ group by p.ProductName
 order by sum(SalesQuantity) DESC
 
 
+--5.Faça um resumo mostrando o total de produtos comprados (Sales Quantity) de acordo com o
+--sexo dos clientes.
+
+
+select 
+
+	c.Gender,
+	sum(SalesQuantity)
+from 
+	 FactOnlineSales as fs
+inner join DimCustomer as c
+on fs.CustomerKey = c.CustomerKey
+where c.CustomerType = 'Person'
+group by c.Gender
+order by sum(SalesQuantity) DESC
+
+
+--FACTEXCHANGERATE
+--6. Faça uma tabela resumo mostrando a taxa de câmbio média de acordo com cada
+--CurrencyDescription. A tabela final deve conter apenas taxas entre 10 e 100.
