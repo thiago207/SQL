@@ -178,14 +178,13 @@ order by sum(SalesQuantity) DESC
 
 
 select 
-
 	c.Gender,
 	sum(SalesQuantity)
 from 
 	 FactOnlineSales as fs
 inner join DimCustomer as c
 on fs.CustomerKey = c.CustomerKey
-where c.CustomerType = 'Person'
+where c.Gender is not null
 group by c.Gender
 order by sum(SalesQuantity) DESC
 
@@ -193,3 +192,47 @@ order by sum(SalesQuantity) DESC
 --FACTEXCHANGERATE
 --6. Faça uma tabela resumo mostrando a taxa de câmbio média de acordo com cada
 --CurrencyDescription. A tabela final deve conter apenas taxas entre 10 e 100.
+
+select top(10) * from FactExchangeRate
+select top(10) * from DimCurrency
+
+select 
+	c.CurrencyDescription,
+	AVG(AverageRate)
+from FactExchangeRate as f
+inner join DimCurrency as c
+on c.CurrencyKey = f.CurrencyKey
+group by c.CurrencyDescription
+having AVG(AverageRate) between 10 and 100
+
+--FACTSTRATEGYPLAN
+--7. Calcule a SOMA TOTAL de AMOUNT referente à tabela FactStrategyPlan destinado aos
+--cenários: Actual e Budget.
+--Dica: A tabela DimScenario será importante para esse exercício.
+
+select
+	s.ScenarioName,
+	sum(Amount)
+from FactStrategyPlan as p
+inner join DimScenario as s
+on s.ScenarioKey = p.ScenarioKey
+where s.ScenarioName IN ('Actual' , 'Budget')
+group by s.ScenarioName
+
+--8. Faça uma tabela resumo mostrando o resultado do planejamento estratégico por ano.
+
+select
+	d.CalendarYear,
+	sum(Amount)
+from FactStrategyPlan as p
+inner join DimDate as d
+on d.Datekey = p.Datekey
+group by d.CalendarYear
+
+
+--DIMPRODUCT/DIMPRODUCTSUBCATEGORY
+9. Faça um agrupamento de quantidade de produtos por ProductSubcategoryName. Leve em
+consideração em sua análise apenas a marca Contoso e a cor Silver.
+10. Faça um agrupamento duplo de quantidade de produtos por BrandName e
+ProductSubcategoryName. A tabela final deverá ser ordenada de acordo com a coluna
+BrandName
