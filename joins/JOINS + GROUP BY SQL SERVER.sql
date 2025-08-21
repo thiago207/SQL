@@ -263,4 +263,4 @@ from
 inner join DimProductSubcategory as s
 on s.ProductCategoryKey = p.ProductSubcategoryKey
 group by s.ProductSubcategoryName, p.BrandName
-order by p.BrandName DESC
+order by p.BrandName desc
