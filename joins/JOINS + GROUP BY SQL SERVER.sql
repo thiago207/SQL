@@ -240,7 +240,7 @@ group by d.CalendarYear
 
 select 
 	s.ProductSubcategoryName,
-	count(p.ProductName) as 'Quantidade de produto'
+	count(*) as 'Quantidade de produto'
 from
 	DimProduct as p
 inner join DimProductSubcategory as s
@@ -256,7 +256,7 @@ group by s.ProductSubcategoryName
 select 
 	s.ProductSubcategoryName,
 	p.BrandName,
-	count(p.ProductName) as 'Quantidade de produto'
+	count(*) as 'Quantidade de produto'
 from
 	DimProduct as p
 inner join DimProductSubcategory as s
