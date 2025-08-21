@@ -230,9 +230,36 @@ on d.Datekey = p.Datekey
 group by d.CalendarYear
 
 
+
 --DIMPRODUCT/DIMPRODUCTSUBCATEGORY
-9. Faça um agrupamento de quantidade de produtos por ProductSubcategoryName. Leve em
-consideração em sua análise apenas a marca Contoso e a cor Silver.
-10. Faça um agrupamento duplo de quantidade de produtos por BrandName e
-ProductSubcategoryName. A tabela final deverá ser ordenada de acordo com a coluna
-BrandName
+
+
+
+--9. Faça um agrupamento de quantidade de produtos por ProductSubcategoryName. Leve em
+--consideração em sua análise apenas a marca Contoso e a cor Silver.
+
+select 
+	s.ProductSubcategoryName,
+	count(p.ProductName) as 'Quantidade de produto'
+from
+	DimProduct as p
+inner join DimProductSubcategory as s
+on s.ProductCategoryKey = p.ProductSubcategoryKey
+group by s.ProductSubcategoryName
+
+
+--10. Faça um agrupamento duplo de quantidade de produtos por BrandName e
+--ProductSubcategoryName. A tabela final deverá ser ordenada de acordo com a coluna
+--BrandName
+
+
+select 
+	s.ProductSubcategoryName,
+	p.BrandName,
+	count(p.ProductName) as 'Quantidade de produto'
+from
+	DimProduct as p
+inner join DimProductSubcategory as s
+on s.ProductCategoryKey = p.ProductSubcategoryKey
+group by s.ProductSubcategoryName, p.BrandName
+order by p.BrandName DESC
