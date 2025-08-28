@@ -114,5 +114,7 @@ SELECT FORMAT(1000, 'G')
 SELECT FORMAT(123456789, '###-##-####')
 
 -- c) Data:
-SELECT FORMAT(CAST('21/03/2021' AS DATETIME), 'dd/MM/yyyy')
+SELECT FORMAT(CAST('21/03/2021' AS DATETIME), 'dd/MM/yyyy')  --'MMM' MES / 'dddd' DIA DA SEMANA
 
+--EXERCICIO:
+select	'A data de validade é:' + format(cast('17/04/2022' as datetime), 'dd/MMM/yyyy' )
