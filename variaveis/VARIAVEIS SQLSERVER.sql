@@ -1,6 +1,6 @@
-﻿--Variaveis 
--- [SQL Server] Vari�veis
--- Aula 2 de 23: Tipos de Dados
+﻿-- [SQL Server] Variaveis
+
+
 
 /* 
 Tipos de dados
@@ -63,5 +63,38 @@ select 'Thiago' + ' ' + 'Felipe'
 
 --Operacoes com data
 
-select 20/07/2007 + 1
 
+-- SQL_VARIANT_PROPERTY - Identificando o tipo de um dado
+
+SELECT 10 AS 'N�mero'
+SELECT 49.50 AS 'Decimal'
+SELECT 'Marcus' AS 'Nome'
+SELECT '20/06/2021' AS 'Data'
+
+SELECT SQL_VARIANT_PROPERTY(10, 'BaseType')
+SELECT SQL_VARIANT_PROPERTY(49.50, 'BaseType')
+SELECT SQL_VARIANT_PROPERTY('Marcus', 'BaseType')
+SELECT SQL_VARIANT_PROPERTY('20/06/2021', 'BaseType')
+
+
+-- 1) CAST: Funcao para especificar o tipo dos valores.
+-- int: inteiro, float: decimal, varchar: string/texto, datetime: data e hora
+
+SELECT CAST(21.45 AS int)
+
+SELECT CAST(21.45 AS float)
+
+SELECT CAST(18.7 AS varchar)
+
+SELECT CAST('15.6' AS float)
+
+SELECT CAST('31/05/2014' AS datetime)
+
+
+-- Exemplo 1: Crie uma consulta juntando o texto 'O pre�o do produto �: ' com o valor 30.99
+
+SELECT 'O pre�o do produto �: ' + CAST(30.99 AS VARCHAR(30))
+
+-- Exemplo 2: Adicione 1 dia � data '20/06/2021'
+
+SELECT CAST('20/06/2021' AS DATETIME) + 1
