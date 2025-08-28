@@ -57,6 +57,22 @@ select 20-10 as 'subtracao'
 select 10 * 10 'mutiplicacao'
 select 181.0/5 as 'divisao'  --(.0) INTEIRO
 
+-- ROUND
+
+SELECT ROUND(18.739130, 2) -- 18.74000
+
+-- ROUND (Truncar)
+
+SELECT ROUND(18.739130, 2, 1) -- 18.7300
+
+-- FLOOR
+
+SELECT FLOOR(18.739130) -- 18
+
+-- CEILING
+
+SELECT CEILING(18.739130) --19
+
 --Operacao texto
 
 select 'Thiago' + ' ' + 'Felipe'
@@ -117,4 +133,7 @@ SELECT FORMAT(123456789, '###-##-####')
 SELECT FORMAT(CAST('21/03/2021' AS DATETIME), 'dd/MM/yyyy')  --'MMM' MES / 'dddd' DIA DA SEMANA
 
 --EXERCICIO:
-select	'A data de validade é:' + format(cast('17/04/2022' as datetime), 'dd/MMM/yyyy' )
+select	'A data de validade é: ' + format(cast('17/04/2022' as datetime), 'dd/MMM/yyyy' )
+
+
+
