@@ -90,10 +90,11 @@ SELECT CAST('15.6' AS float)
 
 SELECT CAST('31/05/2014' AS datetime)
 
+SELECT SQL_VARIANT_PROPERTY(CAST('20/06/2021' as datetime) , 'BaseType')
 
 -- Exemplo 1: Crie uma consulta juntando o texto 'O pre�o do produto �: ' com o valor 30.99
 
-SELECT 'O pre�o do produto �: ' + CAST(30.99 AS VARCHAR(30))
+SELECT 'O preço do produto �: ' + CAST(30.99 AS VARCHAR(30))
 
 -- Exemplo 2: Adicione 1 dia � data '20/06/2021'
 
