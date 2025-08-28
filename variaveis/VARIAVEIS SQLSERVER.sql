@@ -137,3 +137,55 @@ select	'A data de validade é: ' + format(cast('17/04/2022' as datetime), 'dd/MM
 
 
 
+/* 
+Declarando Vari�veis 
+
+1) O que é uma vari�vel?
+Uma variavel e um objeto que armazena o valor de um dado.
+
+2. Estrutura
+
+DECLARE @var tipo
+SET @var = valor
+
+
+DECLARE @var1 INT, @var2 INT,
+	 @texto VARCHAR(MAX),
+	 @data DATETIME
+	
+SET @var1 = 10
+SET @var1 = 45
+SET @texto = 'Um texto qualquer'
+SET @data = '18/02/2021'
+
+*/	
+
+
+SELECT 100 * 8.99 AS 'faturamento'
+
+DECLARE @quantidade AS int, @preco AS float
+SET @quantidade = 100
+SET @preco = 8.99
+
+SELECT @quantidade * @preco AS 'faturamento'
+
+declare @idade as int
+set @idade = 30
+select @idade as 'idade'
+
+-- Exemplo 3: Declare uma vari�vel chamada 'nome' e armazene o valor 'Mateus'
+
+declare @nome as varchar(30)
+set @nome = 'matheus'
+select @nome as 'nome'
+
+-- Exemplo 4: Declare uma vari�vel chamada 'data' e armazene a data de hoje.
+
+declare @data as datetime
+set @data = '28/08/2025'
+
+
+select @data as 'data de hoje'
+
+select day(@data) 
+
