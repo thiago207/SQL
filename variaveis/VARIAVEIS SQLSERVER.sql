@@ -189,3 +189,19 @@ select @data as 'data de hoje'
 
 select day(@data) 
 
+
+
+
+-- declarando mais de uma variavel
+
+declare @int int = 10,
+	@varchar varchar(10) = 'texto',
+	@data datetime = '20/07/2007'
+
+select @int, @varchar, @data
+
+
+declare @quantidade int = 100,
+	@preco float = 89.99
+	
+select @quantidade * @preco
