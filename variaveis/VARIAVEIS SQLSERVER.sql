@@ -194,14 +194,36 @@ select day(@data)
 
 -- declarando mais de uma variavel
 
-declare @int int = 10,
+declare 
+	@int int = 10,
 	@varchar varchar(10) = 'texto',
 	@data datetime = '20/07/2007'
 
 select @int, @varchar, @data
 
 
-declare @quantidade int = 100,
+declare 
+	@quantidade int = 100,
 	@preco float = 89.99
 	
 select @quantidade * @preco
+
+
+
+--Alguns exemplos de uso:
+
+
+-- Aplique um desconto de 10% em todos os preços dos produtos. 
+--Sua consulta final deve conter as colunas ProductKey, ProductName, UnitPrice e Preço com Desconto. 
+declare 
+	@desconto float = 0.10
+
+
+
+select 
+	ProductKey,
+	ProductName, 
+	UnitPrice as 'Preco Cheio',
+	UnitPrice - (UnitPrice * @desconto) as 'preco com desconto'
+from 
+	DimProduct
