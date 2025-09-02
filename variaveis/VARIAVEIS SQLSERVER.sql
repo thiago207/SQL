@@ -254,3 +254,23 @@ FROM
 	DimEmployee
 WHERE BirthDate >= @varData
 ORDER BY Nascimento
+
+
+--Armazenando o resultado de um SELECT em uma variável
+
+-- Exemplo 1: Crie uma variável para armazenar a quantidade total de funcionários da tabela DimEmployee.
+
+
+declare 
+	@varTotalFuncionarios int = (SELECT COUNT(*) FROM DimEmployee)
+
+select @varTotalFuncionarios
+
+
+-- Exemplo 2: Crie uma variável para armazenar a quantidade total de lojas com o status Off.
+
+
+declare
+	@varLojasOff int = (SELECT COUNT(*) FROM DimStore WHERE Status = 'Off')
+
+select @varLojasOff
