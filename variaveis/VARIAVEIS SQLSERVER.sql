@@ -346,3 +346,15 @@ FROM
 WHERE DepartmentName = 'Marketing'
 
 print @ListaNomes
+
+
+
+--Variáveis Globais
+
+SELECT @@SERVERNAME
+
+SELECT @@VERSION 
+
+
+SELECT * FROM DimProduct
+SELECT @@ROWCOUNT
