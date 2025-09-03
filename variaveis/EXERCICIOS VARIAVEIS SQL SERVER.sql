@@ -43,28 +43,47 @@ select round(@div, 2)
 
 
 --a) Declare uma variável chamada ‘produto’ e atribua o valor de ‘Celular’.
+declare 
+	@produto varchar(30) = 'Celualar' 
 
 --b) Declare uma variável chamada ‘quantidade’ e atribua o valor de 12.
-
+declare 
+	@quantidade int = 12
 --c) Declare uma variável chamada ‘preco’ e atribua o valor 9.99.
-
+declare 
+	@preco float = 9.99
 --d) Declare uma variável chamada ‘faturamento’ e atribua o resultado da multiplicação entre
 --‘quantidade’ e ‘preco’.
-
+declare 
+	@faturamento float = @preco * @quantidade
 --e) Visualize o resultado dessas 4 variáveis em uma única consulta, por meio do SELECT.
+select 
+	@produto,
+	@quantidade,
+	@preco,
+	@faturamento
 
 
 
---3. Você é responsável por gerenciar um banco de dados onde são recebidos dados externos de
---usuários. Em resumo, esses dados são:
+--3. Você é responsável por gerenciar um banco de dados onde são recebidos dados externos de usuários. Em resumo, esses dados são:
+
 -- - Nome do usuário
 -- - Data de nascimento
 -- - Quantidade de pets que aquele usuário possui
---Você precisará criar um código em SQL capaz de juntar as informações fornecidas por este
---usuário. Para simular estes dados, crie 3 variáveis, chamadas: nome, data_nascimento e
---num_pets. Você deverá armazenar os valores ‘André’, ‘10/02/1998’ e 2, respectivamente.
---O resultado final a ser alcançado é mostrado no print abaixo:
+
+
+--Você precisará criar um código em SQL capaz de juntar as informações fornecidas por este usuário. 
+--Para simular estes dados, crie 3 variáveis, chamadas: nome, data_nascimento e num_pets. Você deverá armazenar os valores respectivamente.
+declare 
+	@nome varchar(10) = 'Thiago',
+	@data_nascimento datetime = '20/07/2007',
+	@num_pets int = 2
+
+select 
+	'Meu nome é: ' + @nome + ' nasci em '+ FORMAT(@data_nascimento, 'dd/MM/yyyy') + ' tenho ' + cast(@num_pets as varchar) + ' pets.'
 --Dica: você precisará utilizar as funções CAST e FORMAT para chegar no resultado.
+
+
 --4. Você acabou de ser promovido e o seu papel será realizar um controle de qualidade sobre as lojas da empresa.
 --A primeira informação que é passada a você é que o ano de 2008 foi bem complicado para a
 --empresa, pois foi quando duas das principais lojas fecharam. O seu primeiro desafio é descobrir
