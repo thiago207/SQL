@@ -103,7 +103,7 @@ select
 	@LOJAS_2008  = @LOJAS_2008 + StoreName + ', '
 from 
 	DimStore 
-where year(LoadDate) = '2008'
+where year(CloseDate) = 2008
 
 print 'As lojas fechadas no ano de 2008 foram: ' + @LOJAS_2008
 
@@ -117,13 +117,17 @@ select * from DimProductSubcategory
 select * from DimProduct
 
 
+declare 
+	@sub_cat varchar(10) = 'Lamps',
+	@id_sub_cat int = (select ProductSubcategoryKey from DimProductSubcategory where ProductSubcategoryName = 'Lamps')
+	
+print @sub_cat
+print @ID_SUB_CAT
+
 
 select 
-	p.ProductName,
-	s.ProductSubcategoryName
+	ProductName
 from 
-	DimProductSubcategory as s
-inner join DimProduct as p
-on s.ProductSubcategoryKey = p.ProductSubcategoryKey
-where s.ProductSubcategoryName = 'Lamps'
-group by s.ProductSubcategoryName, p.ProductName
+	DimProduct
+where ProductSubcategoryKey = @id_sub_cat
+
