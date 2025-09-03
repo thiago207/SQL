@@ -274,3 +274,59 @@ declare
 	@varLojasOff int = (SELECT COUNT(*) FROM DimStore WHERE Status = 'Off')
 
 select @varLojasOff
+
+
+
+--  PRINT - Printando uma mensagem na tela
+-- Exemplo 1: Printe na tela a quantidade de lojas On e a quantidade  de lojas Off da tabela DimStore. Utilize variáveis para isso.
+
+select count(*) from DimProduct
+
+declare 
+	@varLojasOff int = (SELECT COUNT(*) FROM DimStore WHERE Status = 'Off'),
+	@varLojasOn int = (SELECT COUNT(*) FROM DimStore WHERE Status = 'On')
+
+print 'Lojas On: ' + cast(@varLojasOn as  varchar(20))
+print 'Lojas Off: ' + cast(@varLojasOff as  varchar(20))
+
+
+
+--Armazenando em uma variável um registro de uma consulta
+
+-- Exemplo 1: Qual é o nome do produto que teve a maior quantidade vendida EM UMA ÚNICA VENDA da tabela FactSales?
+
+-- jeito 1 de fazer:
+declare
+	@ProdutoQuantidadeVendas int = (select top(1) ProductKey from FactSales order by SalesQuantity DESC),
+	@QuantidadeVendas int = (select top(1) SalesQuantity from FactSales order by SalesQuantity DESC)
+
+print @QuantidadeVendas
+print @ProdutoQuantidadeVendas
+
+-- jeito 2:
+
+declare 
+	@key_produto int,
+	@Quantidade int
+
+
+select top(1)
+	@key_produto = ProductKey ,
+	@Quantidade  = SalesQuantity
+from	
+	FactSales 
+order by 
+	SalesQuantity DESC
+
+print @key_produto
+print @Quantidade
+
+-- OTIMIZANDO/AUTOMATICO: smp pega o top 1 sem ter que fazer a consulta dnv
+
+select top(1)
+	ProductKey ,
+	ProductName
+from	
+	DimProduct
+where ProductKey = @key_produto
+
