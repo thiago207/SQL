@@ -92,6 +92,8 @@ select
 --O seu resultado deverá estar estruturado em uma frase, com a seguinte estrutura:
 --‘As lojas fechadas no ano de 2008 foram: ’ + nome_das_lojas
 --Obs: utilize o comando PRINT (e não o SELECT!) para mostrar o resultado.
+
+
 --5. Você precisa criar uma consulta para mostrar a lista de produtos da tabela DimProduct para
 --uma subcategoria específica: ‘Lamps’.
 --Utilize o conceito de variáveis para chegar neste resultado.
