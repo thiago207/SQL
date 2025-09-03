@@ -330,3 +330,19 @@ from
 	DimProduct
 where ProductKey = @key_produto
 
+ 
+-- Acumulando valores dentro de uma variável
+
+-- Exemplo 1: Retorne uma lista com os nomes dos funcionários do departamento de Marketing
+
+declare
+	@ListaNomes varchar(max) 
+set @ListaNomes = ''
+
+SELECT
+	@ListaNomes = @ListaNomes + FirstName + ', ' -- + CHAR(10) para deixar um embaixo do outro
+FROM
+	DimEmployee	
+WHERE DepartmentName = 'Marketing'
+
+print @ListaNomes
