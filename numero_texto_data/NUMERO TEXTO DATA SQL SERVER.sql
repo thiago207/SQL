@@ -20,3 +20,6 @@ SELECT
 	CONCAT(FirstName, ' ', LastName) AS 'Nome Completo'
 FROM
 	DimCustomer
+
+
+
